@@ -5,7 +5,8 @@
     <title>
       Kultúrtöri 2k18
     </title>
-    <style> 
+    <style>
+      @media screen and (max-width:999px) {
        img[src = "options.png"]{
          width: 10%;
          height: 10% 
@@ -31,10 +32,32 @@
          height: 100vh;
          width: 100%;
        }
-
-       @media screen and (min-width:999px) {
+       
+      }
+       @media screen and (min-width:1000px) {
         img[src = "options.png"]{
          width: 20%;
+       }
+       img[src = "backwards.png"]{
+         width: 10%;
+         height: 10% 
+       }
+       * {
+        margin:0;
+        padding:0;
+       }
+       #map {
+        height:80vh;
+        width: 100%;
+       }
+       #options-bar {
+         height:20vh;
+         width: 100%;
+         background-color: #41f4a6;
+       }
+       #options {
+         height: 100vh;
+         width: 100%;
        }
        }
     </style>
