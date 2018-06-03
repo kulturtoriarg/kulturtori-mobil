@@ -8,11 +8,16 @@
     <style> 
        img[src = "options.png"]{
          width: 20%;
-         height: 15% 
+         height: 15%;
+         float: right;
        }
        img[src = "backwards.png"]{
          width: 10%;
          height: 10% 
+       }
+       img[src = "X.png"] {
+         width : 10%;
+         height: 10%;
        }
        * {
         margin:0;
@@ -53,6 +58,9 @@
           <button id = "negyedik">4.nap</button>
           <button id = "otodik">5.nap</button>
         </div>
+        <div id = "removeRoute">
+          <img src = "X.png" id ="remove">
+        </div>
     </div>
     <div id="map"></div>
     <script>
@@ -84,9 +92,11 @@
           }
         }
         
+        var directionsDisplay = new google.maps.DirectionsRenderer();
+        var directionsService = new google.maps.DirectionsService();
+
         function displayRoute(origin, destination) {
           
-          var directionsDisplay = new google.maps.DirectionsRenderer();
           directionsDisplay.setMap(map);
           var start = new google.maps.LatLng(origin.lat, origin.lng)
           var end = new google.maps.LatLng(destination.lat, destination.lng)
@@ -95,8 +105,7 @@
             origin : start,
             destination : end,
             travelMode : google.maps.TravelMode.DRIVING
-        };
-          var directionsService = new google.maps.DirectionsService(); 
+        }; 
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
@@ -109,7 +118,20 @@
         elso.onclick = function() {
           alert("supp")
           displayRoute(budapest, volterra)
+          options()
         };
+
+        masodik = document.getElementById("masodik")
+        masodik.onclick = function() {
+          displayRoute(san_gimignano, siena)
+          options()
+        }
+        
+        remove = document.getElementById("remove")
+        remove.onclick = function() {
+          directionsDisplay.setMap(null)
+          options()
+        }
 
         /*displayRoute(san_gimignano, bologna)       
         directionDisplay.setMap(null);
@@ -126,6 +148,9 @@
         createMarker(perugia);
 
 
+        var alaska = {lat: 66.160507, lng: -153.369141}
+        createMarker(alaska)
+
         function createMarker(coords){
           var marker = new google.maps.Marker({
             position: coords,
@@ -133,6 +158,9 @@
         })
       }
     }
+      
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuqaXh0V02aV8bK3Km3vadDHqcepeTzcU&callback=initMap">
@@ -151,6 +179,9 @@
           options_div.style.display = "none";
         }
       }
+
+
+      
             
     </script>
     <div id = "options-bar">
