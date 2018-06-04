@@ -39,28 +39,39 @@
        #napok {
          display: flex;
          flex-direction: row;
-         justify-content: center;
-         align-content: center;
          flex-wrap: wrap;
+         justify-content: center
        }
        button {
          width: 10%
        }
+       #felso {
+         align-self: flex-start;
+
+       }
+
+       #also {
+         align-self: flex-end
+       }
+
     </style>
   </head>
   <body>
     <div id = "options">
         <img src="backwards.png" onclick="options()">
-        <div id = "napok" >
-          <button id = "elso">1.nap</button>
-          <button id = "masodik">2.nap</button>
-          <button id = "harmadik">3.nap</button>
-          <button id = "negyedik">4.nap</button>
-          <button id = "otodik">5.nap</button>
+        <div id = "napok">
+          <div id = "felso">
+            <button id = "elso">1.nap</button>
+            <button id = "masodik">2.nap</button>
+            <button id = "harmadik">3.nap</button>
+          </div>
+          <div id = "also" >
+            <button id = "negyedik">4.nap</button>
+            <button id = "otodik">5.nap</button>
+            <button id = "hatodik">6.nap</button>
+          </div>
         </div>
-        <div id = "removeRoute">
-          <img src = "X.png" id ="remove">
-        </div>
+
     </div>
     <div id="map"></div>
     <script>
@@ -80,17 +91,25 @@
         var verona = {lat: 45.4299, lng: 10.98444};
         var budapest = {lat: 47.49801, lng: 19.03991};
 
-        options_div = document.getElementById("options")
-        options_div.style.display = "none"
+      options_div = document.getElementById("options")
+      options_div.style.display = "none"
+      map = document.getElementById("map")
+      options_bar = document.getElementById("options-bar")
 
-        function options() {
-          if (options_div.style.display == "none"){
-            options_div.style.display = "block";
-          }
-          else {
-            options_div.style.display = "none";
-          }
+      function options() {
+        if (options_div.style.display == "none"){
+          options_div.style.display = "block";
+          map.style.display = "none"
+          options_bar.style.display = "none"
         }
+        else {
+          options_div.style.display = "none";
+          map.style.display = "block"
+          options_bar.style.display = "block"
+
+        }
+
+      }
         
         var directionsDisplay = new google.maps.DirectionsRenderer();
         var directionsService = new google.maps.DirectionsService();
@@ -114,24 +133,29 @@
         }
         
 
+
         elso = document.getElementById("elso")
         elso.onclick = function() {
-          alert("supp")
           displayRoute(budapest, volterra)
           options()
+          remove.style.display = "block"
         };
 
         masodik = document.getElementById("masodik")
         masodik.onclick = function() {
           displayRoute(san_gimignano, siena)
           options()
-        }
+          remove.style.display = "block"
+        };
+
+        remove.style.display = "none"
         
         remove = document.getElementById("remove")
         remove.onclick = function() {
           directionsDisplay.setMap(null)
-          options()
-        }
+          initMap()
+          remove.style.display = "none"
+        };
 
         /*displayRoute(san_gimignano, bologna)       
         directionDisplay.setMap(null);
@@ -170,23 +194,31 @@
     <script>
       options_div = document.getElementById("options")
       options_div.style.display = "none"
+      map = document.getElementById("map")
+      options_bar = document.getElementById("options-bar")
 
       function options() {
         if (options_div.style.display == "none"){
           options_div.style.display = "block";
+          map.style.display = "none"
+          options_bar.style.display = "none"
         }
         else {
           options_div.style.display = "none";
+          map.style.display = "block"
+          options_bar.style.display = "block"
+
         }
+
       }
-
-
-      
-            
+  
     </script>
     <div id = "options-bar">
       <div id = "options-img">
         <img src ="options.png" onclick="options()">
+      </div>
+      <div id = "removeRoute">
+        <img src = "X.png" id ="remove">
       </div>
     </div>    
   </footer>
