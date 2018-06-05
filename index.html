@@ -58,9 +58,7 @@
           <button id = "negyedik">4.nap</button>
           <button id = "otodik">5.nap</button>
         </div>
-        <div id = "removeRoute">
-          <img src = "X.png" id ="remove">
-        </div>
+
     </div>
     <div id="map"></div>
     <script>
@@ -70,6 +68,8 @@
             zoom: 5,
             center: center
         });
+
+
         var perugia = {lat: 43.1122, lng: 12.38878};
         var san_gimignano = {lat: 43.467632, lng: 11.043491};
         var volterra = {lat: 43.40251, lng: 10.86152};
@@ -78,14 +78,20 @@
         var vicenza = {lat: 45.54672, lng: 11.5475};
         var verona = {lat: 45.4299, lng: 10.98444};
         var budapest = {lat: 47.49801, lng: 19.03991};
+
+
         options_div = document.getElementById("options")
         options_div.style.display = "none"
+        map_div = document.getElementById("map")
+
         function options() {
           if (options_div.style.display == "none"){
             options_div.style.display = "block";
+            map_div.style.display = "none"
           }
           else {
             options_div.style.display = "none";
+            map_div.style.display = "block"
           }
         }
         
@@ -111,25 +117,28 @@
         
         elso = document.getElementById("elso")
         elso.onclick = function() {
-          alert("supp")
           displayRoute(budapest, volterra)
+          remove.style.display = "block"
           options()
         };
+
         masodik = document.getElementById("masodik")
         masodik.onclick = function() {
           displayRoute(san_gimignano, siena)
+          remove.style.display = "block"
           options()
         }
         
         remove = document.getElementById("remove")
         remove.onclick = function() {
           directionsDisplay.setMap(null)
-          options()
+          remove.style.display = "none"
+          initMap()
         }
-        /*displayRoute(san_gimignano, bologna)       
-        directionDisplay.setMap(null);
-        directionDisplay = null
-        displayRoute(volterra, san_gimignano)*/
+
+        remove.style.display = "none"
+        
+
         createMarker(budapest);
         createMarker(san_gimignano);
         createMarker(volterra);
@@ -155,22 +164,29 @@
   </body>
   <footer>
     <script>
-      options_div = document.getElementById("options")
-      options_div.style.display = "none"
-      function options() {
-        if (options_div.style.display == "none"){
-          options_div.style.display = "block";
+        options_div = document.getElementById("options")
+        options_div.style.display = "none"
+        map_div = document.getElementById("map")
+
+        function options() {
+          if (options_div.style.display == "none"){
+            options_div.style.display = "block";
+            map_div.style.display = "none"
+          }
+          else {
+            options_div.style.display = "none";
+            map_div.style.display = "block"
+          }
         }
-        else {
-          options_div.style.display = "none";
-        }
-      }
       
             
     </script>
     <div id = "options-bar">
       <div id = "options-img">
         <img src ="options.png" onclick="options()">
+      </div>
+      <div id = "removeRoute">
+        <img src = "X.png" id ="remove">
       </div>
     </div>    
   </footer>
