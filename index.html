@@ -16,8 +16,8 @@
          height: 10% 
        }
        img[src = "X.png"] {
-         width : 10%;
-         height: 10%;
+         width : 20%;
+         height: 20%;
        }
        * {
         margin:0;
@@ -37,14 +37,14 @@
          width: 100%;
        }
        #napok {
+         width: 100%;
          display: flex;
-         flex-direction: row;
-         justify-content: center;
-         align-content: center;
-         flex-wrap: wrap;
+         flex-direction: column;
+         justify-content: space-around;
+         align-items: center;
        }
        button {
-         width: 10%
+         width: 10%;
        }
     </style>
   </head>
@@ -83,15 +83,18 @@
         options_div = document.getElementById("options")
         options_div.style.display = "none"
         map_div = document.getElementById("map")
+        options_bar = document.getElementById("options-bar")
 
         function options() {
           if (options_div.style.display == "none"){
             options_div.style.display = "block";
             map_div.style.display = "none"
+            options_bar.style.display = "none"
           }
           else {
             options_div.style.display = "none";
             map_div.style.display = "block"
+            options_bar.style.display = "block"
           }
         }
         
@@ -167,15 +170,18 @@
         options_div = document.getElementById("options")
         options_div.style.display = "none"
         map_div = document.getElementById("map")
+        options_bar = document.getElementById("options-bar")
 
         function options() {
           if (options_div.style.display == "none"){
             options_div.style.display = "block";
             map_div.style.display = "none"
+            options_bar.style.display = "none"
           }
           else {
             options_div.style.display = "none";
             map_div.style.display = "block"
+            options_bar.style.display = "block"
           }
         }
       
