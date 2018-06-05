@@ -144,20 +144,31 @@
         remove.style.display = "none"
         
 
-        createMarker(budapest);
-        createMarker(san_gimignano);
-        createMarker(volterra);
-        createMarker(siena);
-        createMarker(bologna);
-        createMarker(vicenza);
-        createMarker(verona);
-        createMarker(perugia);
+        createMarker(budapest, "frick");
+        createMarker(san_gimignano, "heck");
+        createMarker(volterra, "");
+        createMarker(siena, "");
+        createMarker(bologna, "");
+        createMarker(vicenza, "");
+        createMarker(verona, "");
+        createMarker(perugia, "");
+
         var alaska = {lat: 66.160507, lng: -153.369141}
-        createMarker(alaska)
-        function createMarker(coords){
+
+        createMarker(alaska, "link 1 <br> link 2")
+
+        function createMarker(coords, content){
           var marker = new google.maps.Marker({
             position: coords,
             map:map
+        })
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: content
+        })
+
+        marker.addListener("click", function() {
+          infoWindow.open(map, marker)
         })
       }
     }
