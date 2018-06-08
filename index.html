@@ -44,7 +44,7 @@
          align-items: center;
        }
        button {
-         margin-top: 30px;
+         margin-top: 25px;
          width: 30%;
          line-height: 40px;
        }
@@ -137,16 +137,16 @@
         }
         remove.style.display = "none"
         
-        createMarker(budapest, "frick");
-        createMarker(san_gimignano, "heck");
-        createMarker(volterra, "");
-        createMarker(siena, "");
-        createMarker(bologna, "");
-        createMarker(vicenza, "kapd be gríndély");
-        createMarker(verona, "Rohadj meg");
-        createMarker(perugia, "");
+        createMarker(budapest, "");
+        createMarker(san_gimignano, "<h5>San Gimignano</h5><h6>Szép Emma,Varga Pál Patrik/Lendvai Máté,Draskóczy Áron</h6>");
+        createMarker(volterra, "<h5>Volterra</h5><h6>Kostyál Csaba,Láda-Hartyáni Dorottya/Burai-Huber Marci, Répássy Péter</h6>")
+        createMarker(siena, "<h5>Siena</h5> előadók: <h6>Drienyovszki László,Kenyó Kristóf/Janky Csilla,Fabók Lilla</h6>");
+        createMarker(bologna, "<h5>Bologna</h5> előadók: <h6>Somogyi Tamás,Szics Alexander/Fuchs Péter,Hermann Vince</h6>");
+        createMarker(vicenza, "<h5>Vicenza</h5> előadók: <h6>Juhász Gergely, Rézsó Balázs/Balogh Eszter, Kis Flóra</h6>");
+        createMarker(verona, "<h5>Verona</h5>előadók: <h6>Hajdú Viola, Hunyadi Bettina/Bálint Bori, Bánk Bori<br> Kothencz Fruzsina, Kövesdi Luca/Bellus Réka , Ecseri Flóra</h6>");
+        createMarker(perugia, "<h5>Perugia</h5><h6>Buzás Bence,Gábriel Ádám/Varga Kinga,Hegedűs Dorka</h6>");
         var arg = {lat: 55.751244, lng: 37.618423}
-        createMarker(arg, "<a href = https://vppatrik57.wixsite.com/jjjjjj>link 1 <a> <br> <a href = https://www.bit.ly/totallynotaprank>link 2</a>") 
+        createMarker(arg, "<a href = https://www.bit.ly/kn6ovfbshnsa >link 1 <a> <br> <a href = https://www.bit.ly/totallynotaprank>link 2</a>") 
                      
         function createMarker(coords, content){
           var marker = new google.maps.Marker({
