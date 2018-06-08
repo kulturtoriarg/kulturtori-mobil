@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html> 
   <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0"> 
     <title>
       Kultúrtöri 2k18
     </title>
-    <style> 
+    <style>
+       
+       body {
+         height: 80vh;
+         width: 100%;
+       }
+
+       footer {
+         height: 20vh;
+         width: 100%
+       }
+
        img[src = "options.png"]{
-         width: 20%;
-         height: 15%;
+         width: 15vw;
+         height: 20vh;
          float: right;
        }
        img[src = "backwards.png"]{
@@ -28,7 +39,7 @@
         width: 100%;
        }
        #options-bar {
-         height:11vh;
+         height:20vh;
          width: 100%;
          background-color: #41f4a6;
        }
@@ -70,8 +81,6 @@
             zoom: 5,
             center: center
         });
-
-
         var perugia = {lat: 43.1122, lng: 12.38878};
         var san_gimignano = {lat: 43.467632, lng: 11.043491};
         var volterra = {lat: 43.40251, lng: 10.86152};
@@ -80,13 +89,10 @@
         var vicenza = {lat: 45.54672, lng: 11.5475};
         var verona = {lat: 45.4299, lng: 10.98444};
         var budapest = {lat: 47.49801, lng: 19.03991};
-
-
         options_div = document.getElementById("options")
         options_div.style.display = "none"
         map_div = document.getElementById("map")
         options_bar = document.getElementById("options-bar")
-
         function options() {
           if (options_div.style.display == "none"){
             options_div.style.display = "block";
@@ -126,7 +132,6 @@
           remove.style.display = "block"
           options()
         };
-
         masodik = document.getElementById("masodik")
         masodik.onclick = function() {
           displayRoute(san_gimignano, siena)
@@ -140,10 +145,8 @@
           remove.style.display = "none"
           initMap()
         }
-
         remove.style.display = "none"
         
-
         createMarker(budapest, "frick");
         createMarker(san_gimignano, "heck");
         createMarker(volterra, "");
@@ -152,23 +155,17 @@
         createMarker(vicenza, "kapd be gríndély");
         createMarker(verona, "Rohadj meg");
         createMarker(perugia, "");
-
-        var alaska = {lat: 66.160507, lng: -153.369141}
-
-        createMarker(alaska, "<a href = https://vppatrik57.wixsite.com/jjjjjj>link 1 <a> <br> <a href = https://www.bit.ly/totallynotaprank>link 2</a>") 
+        var arg = {lat: 55.751244, lng: 37.618423}
+        createMarker(arg, "<a href = https://vppatrik57.wixsite.com/jjjjjj>link 1 <a> <br> <a href = https://www.bit.ly/totallynotaprank>link 2</a>") 
                      
-
-
         function createMarker(coords, content){
           var marker = new google.maps.Marker({
             position: coords,
             map:map
         })
-
         var infoWindow = new google.maps.InfoWindow({
           content: content
         })
-
         marker.addListener("click", function() {
           infoWindow.open(map, marker)
         })
@@ -186,7 +183,6 @@
         options_div.style.display = "none"
         map_div = document.getElementById("map")
         options_bar = document.getElementById("options-bar")
-
         function options() {
           if (options_div.style.display == "none"){
             options_div.style.display = "block";
