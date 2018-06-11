@@ -15,7 +15,6 @@
          position:fixed;
          width: 100%
        }
-
        img[src = "options.png"]{
          width: 20vh;
          height: 100%;
@@ -75,11 +74,14 @@
     </div>
     <div id="map"></div>
     <script>
+        window.scrollTo(0,1);
+
         function initMap() {
           var center = {lat: 45.328979, lng: 14.457664};
           var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 5,
-            center: center
+            center: center,
+            gestureHandling: 'greedy'
         });
         var perugia = {lat: 43.1122, lng: 12.38878};
         var san_gimignano = {lat: 43.467632, lng: 11.043491};
