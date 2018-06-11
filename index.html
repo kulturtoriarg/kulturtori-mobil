@@ -16,7 +16,7 @@
          width: 100%
        }
        img[src = "options.png"]{
-         width: 20vh;
+         width: 11vh;
          height: 100%;
          float: right;
        }
@@ -25,7 +25,7 @@
          height: 10% 
        }
        img[src = "X.png"] {
-         width : 20vh;
+         width : 11vh;
          height: 100%;
        }
        * {
@@ -37,7 +37,7 @@
         width: 100%;
        }
        #options-bar {
-         height:20vh;
+         height:11vh;
          width: 100%;
          background-color: #41f4a6;
        }
@@ -74,17 +74,20 @@
     </div>
     <div id="map"></div>
     <script>
-        function hideAddressBar() {
-          if(!window.location.hash){
-            if(document.height < window.outerHeight){
-              document.body.style.height = (window.outerHeight + 50) + 'px';
-              }
-              setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
-          }
+      
+      function launchIntoFullscreen(element) {
+        if(element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if(element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if(element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if(element.msRequestFullscreen) {
+          element.msRequestFullscreen();
         }
+      }
 
-        window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
-        window.addEventListener("orientationchange", hideAddressBar );
+      launchIntoFullscreen(document.documentElement);
 
         function initMap() {
           var center = {lat: 45.328979, lng: 14.457664};
