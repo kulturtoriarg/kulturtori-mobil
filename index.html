@@ -149,17 +149,19 @@
         var directionsDisplay = new google.maps.DirectionsRenderer();
         var directionsService = new google.maps.DirectionsService();        
 
-        function displayRoute(origin, destination, waypoints) {
+        function displayRoute(origin, destination, waypoints = []) {
           
           directionsDisplay.setMap(map);
           var start = new google.maps.LatLng(origin.lat, origin.lng)
           var end = new google.maps.LatLng(destination.lat, destination.lng)
           var waypts = []
-          for(i = 0; i < waypoints.length; i++) {
-            waypts.push({
-              location: waypoints[i],
-              stopover: true
-            })
+          if(waypoints) {
+            for(i = 0; i < waypoints.length; i++) {
+              waypts.push({
+                location: waypoints[i],
+                stopover: true
+              })
+            }
           }
           
           var request = {
