@@ -130,6 +130,8 @@
         var verona = {lat: 45.4299, lng: 10.98444};
         var budapest = {lat: 47.49801, lng: 19.03991};
         var gardaCamping = {lat: 45.447687, lng: 10.701854}
+        var boschetto = {lat:43.453477, lng:11.053848}
+        var assisi = {lat:43.070701700, lng:12.619596600}
         options_div = document.getElementById("options")
         options_div.style.display = "none"
         map_div = document.getElementById("map")
@@ -147,15 +149,24 @@
         var directionsDisplay = new google.maps.DirectionsRenderer();
         var directionsService = new google.maps.DirectionsService();        
 
-        function displayRoute(origin, destination) {
+        function displayRoute(origin, destination, waypoints) {
           
           directionsDisplay.setMap(map);
           var start = new google.maps.LatLng(origin.lat, origin.lng)
           var end = new google.maps.LatLng(destination.lat, destination.lng)
+          var waypts = []
+          for(i = 0; i < waypoints.length; i++) {
+            waypts.push({
+              location: waypoints[i],
+              stopover: true
+            })
+          }
           
           var request = {
             origin : start,
             destination : end,
+            waypoints: waypts,
+            optimizeWaypoints: true,
             travelMode : google.maps.TravelMode.DRIVING
         }; 
           directionsService.route(request, function(response, status) {
@@ -167,14 +178,38 @@
         
         elso = document.getElementById("elso")
         elso.onclick = function() {
-          displayRoute(budapest, volterra)
+          displayRoute(budapest, gardaCamping)
           options()
         };
         masodik = document.getElementById("masodik")
         masodik.onclick = function() {
-          displayRoute(san_gimignano, siena)
+          displayRoute(gardaCamping, gardaCamping, [verona, vicenza])
           options()
         }
+        harmadik = document.getElementById("harmadik")
+        harmadik.onclick = function() {
+          displayRoute(gardaCamping, boschetto, [bologna])
+          options()
+        }
+        negyedik = document.getElementById("negyedik")
+        negyedik.onclick = function() {
+          displayRoute(boschetto, boschetto, [siena, volterra, san_gimignano])
+          options()
+        }
+
+        otodik = document.getElementById("otodik")
+        otodik.onclick = function() {
+          displayRoute(boschetto, boschetto, [assisi, perugia])
+          options()
+        }
+
+        hatodik = document.getElementById("hatodik")
+        hatodik.onclick = function() {
+          displayRoute(boschetto, budapest)
+          options()
+        }
+
+
         function remove() {
           directionsDisplay.setMap(null)
           initMap()
@@ -189,8 +224,10 @@
         createMarker(verona, "<h5>Verona</h5>előadók: <h6>Hajdú Viola, Hunyadi Bettina/Bálint Bori, Bánk Bori<br> Kothencz Fruzsina, Kövesdi Luca/Bellus Réka , Ecseri Flóra</h6>");
         createMarker(perugia, "<h5>Perugia</h5><h6>Buzás Bence,Gábriel Ádám/Varga Kinga,Hegedűs Dorka</h6>");
         createMarker(gardaCamping, "<h5>Del Garda Village and Camping</h5><h6>1.táborhely</h6>")
+        createMarker(boschetto, "<h5>Camping il Broschetto</h5><h6>2.táborhely</h6>")
+        createMarker(assisi, "<h5>Assisi</h5><h6></h6>")
         var arg = {lat: 55.751244, lng: 37.618423}
-        createMarker(arg, "<a href = https://docs.google.com/document/d/1zkJeInFFIh_ALFKykyUZHRfKbzNqYq8oG3JXKmZ31BM/edit?usp=sharing >link 1 <a> <br> <a href = https://docs.google.com/document/d/1L-WCf2o5YA5JVTG0jG9BbZclJxuhXItYO2xy_bPaVIU/edit?usp=sharing>link 2</a>") 
+        createMarker(arg, "<a href = https://docs.google.com/document/d/1zkJeInFFIh_ALFKykyUZHRfKbzNqYq8oG3JXKmZ31BM/edit?usp=sharing >Szabályzat<a> <br> <a href = https://docs.google.com/document/d/1L-WCf2o5YA5JVTG0jG9BbZclJxuhXItYO2xy_bPaVIU/edit?usp=sharing>Első rejtvény</a>") 
                      
         function createMarker(coords, content){
           var marker = new google.maps.Marker({
